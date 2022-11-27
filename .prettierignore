@@ -1,0 +1,15 @@
+/.svelte-kit
+/package
+.env
+.env.*
+node_modules
+.vscode
+
+# Ignore artifacts:
+build
+coverage
+debug
+
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
