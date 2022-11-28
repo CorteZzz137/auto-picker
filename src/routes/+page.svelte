@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Heroes from '$lib/components/Heroes.svelte';
-	import SelectedHero from '$lib/components/SelectedHero.svelte';
 	import { invoke } from '@tauri-apps/api/tauri';
 	import { onDestroy, onMount } from 'svelte';
 	import type { Hero } from '$lib/types/heroes';

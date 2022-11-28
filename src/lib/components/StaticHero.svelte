@@ -1,26 +1,21 @@
 <script lang="ts">
-	import drag from '$lib/actions/draggable';
 	import { createEventDispatcher } from 'svelte';
-	import { tweened } from 'svelte/motion';
 	import type { Hero as HeroType } from '$lib/types/heroes';
+	import { tweened } from 'svelte/motion';
+	import DynamicHero from './DynamicHero.svelte';
 	const dispatch = createEventDispatcher();
 
 	export let hero: HeroType;
 	export let pointerEvents = true;
-	let video: HTMLVideoElement;
 
-	const coords = tweened(
-		{ x: 0, y: 0 },
-		{
-			duration: 100
-		}
-	);
+	const coords = tweened({ x: 0, y: 0 }, { duration: 0 });
+	let showPoster = false;
 
 	const handleDrag = (node: HTMLDivElement) => {
 		let globalDX = 0;
 		let globalDY = 0;
 
-		function handleMousedown(e: MouseEvent) {
+		function handleMousedown(_e: MouseEvent) {
 			globalDX = 0;
 			globalDY = 0;
 			window.addEventListener('mousemove', handleMousemove);
@@ -50,29 +45,64 @@
 			destroy: () => {}
 		};
 	};
+
+	const hoverDynamicPoster = (node: HTMLDivElement, props: { enabled: boolean }) => {
+		let { enabled } = props;
+
+		function handleMouseenter(e: MouseEvent) {
+			if (!enabled) return;
+
+			const bounds = node.getBoundingClientRect();
+
+			coords.set({ x: bounds.x - 40 + bounds.width / 2, y: bounds.y - 56 + bounds.height / 2 });
+			showPoster = true;
+			node.addEventListener('mouseout', handleMouseout);
+		}
+
+		function handleMouseout(e: MouseEvent) {
+			if (!enabled) return;
+
+			coords.set({ x: 0, y: 0 });
+			showPoster = false;
+			node.removeEventListener('mouseout', handleMouseout);
+		}
+
+		node.addEventListener('mouseenter', handleMouseenter);
+		return {
+			update: (props: { enabled: boolean }) => {
+				enabled = props.enabled;
+				if (!enabled) {
+					coords.set({ x: 0, y: 0 });
+					showPoster = false;
+					node.removeEventListener('mouseenter', handleMouseenter);
+					node.removeEventListener('mouseout', handleMouseout);
+				}
+
+				if (enabled) {
+					node.addEventListener('mouseenter', handleMouseenter);
+				}
+			},
+			destroy: () => {}
+		};
+	};
 </script>
 
-<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
 	use:handleDrag
+	use:hoverDynamicPoster={{ enabled: pointerEvents }}
 	on:mousedown={() => dispatch('selected', hero.id)}
-	style="translate: {$coords.x}px {$coords.y}px;"
-	class="group relative flex h-14 w-8 overflow-hidden rounded-sm duration-75 hover:z-40 hover:cursor-pointer hover:overflow-visible {!pointerEvents
-		? 'pointer-events-none'
-		: ''}"
+	class="relative flex h-14 w-8 cursor-pointer overflow-hidden {!pointerEvents ? 'pointer-events-none' : ''}"
 >
 	<div class="pointer-events-none absolute -left-[4px] h-full w-[125%]">
-		<div class="relative h-full border-black object-fill group-hover:scale-[200%] group-hover:border">
-			<img src={`/heroes/images/${hero.lowercase_name}.jpg`} alt="name" class="h-full object-fill" />
-			<h1
-				class="absolute left-0 bottom-0 mx-auto hidden w-full flex-wrap items-center justify-center bg-black/70 py-[2px] px-0.5 text-[0.27rem] uppercase leading-[0.27rem] text-slate-200 group-hover:flex"
-			>
-				<span class="w-full translate-y-[1px] text-center">{hero.name}</span>
-			</h1>
-		</div>
+		<img src={`/heroes/images/${hero.lowercase_name}.jpg`} alt="name" class="h-full object-fill" />
 	</div>
 </div>
+
+{#if showPoster}
+	<div style="translate: {$coords.x}px {$coords.y}px;" class="pointer-events-none absolute left-0 top-0 z-50">
+		<DynamicHero {hero} border={true} />
+	</div>
+{/if}
 
 <style>
 	div {
