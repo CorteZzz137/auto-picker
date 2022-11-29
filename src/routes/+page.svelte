@@ -39,7 +39,7 @@
 	};
 </script>
 
-<div class="grid grid-cols-[905px_auto] grid-rows-[auto_auto]">
+<div class="grid grid-cols-[71vw_29vw] grid-rows-[71vh_29vh]">
 	<Heroes
 		heroes={data.heroes}
 		{pointerEvents}
@@ -50,7 +50,8 @@
 			console.log(e.detail);
 		}}
 	/>
-	<div class="row-start-2 p-10">
+	<div class="row-start-2 h-full bg-gray-700">
 		<DynamicHero hero={data.heroes[selectedId]} border={false} />
 	</div>
+	<div class="col-start-2 row-span-2 bg-gray-700" />
 </div>

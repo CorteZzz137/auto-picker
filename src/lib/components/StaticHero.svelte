@@ -7,6 +7,8 @@
 
 	export let hero: HeroType;
 	export let pointerEvents = true;
+	export let onlyCarry = false;
+	export let onlySupport = false;
 
 	const coords = tweened({ x: 0, y: 0 }, { duration: 0 });
 	let showPoster = false;
@@ -85,13 +87,24 @@
 			destroy: () => {}
 		};
 	};
+
+	const isMuted = (onlyCarry: boolean, onlySupport: boolean) => {
+		if (onlyCarry && onlySupport && hero.roles.includes('Carry') && hero.roles.includes('Support')) {
+			return false;
+		}
+		if (onlyCarry && !hero.roles.includes('Carry')) return true;
+		if (onlySupport && !hero.roles.includes('Support')) return true;
+		return false;
+	};
 </script>
 
 <div
 	use:handleDrag
 	use:hoverDynamicPoster={{ enabled: pointerEvents }}
 	on:mousedown={() => dispatch('selected', hero.id)}
-	class="relative flex h-14 w-8 cursor-pointer overflow-hidden {!pointerEvents ? 'pointer-events-none' : ''}"
+	class="transition-filter relative flex h-14 w-8 cursor-pointer overflow-hidden {isMuted(onlyCarry, onlySupport)
+		? 'grayscale opacity-30'
+		: ''} {!pointerEvents ? 'pointer-events-none' : ''}"
 >
 	<div class="pointer-events-none absolute -left-[4px] h-full w-[125%]">
 		<img src={`/heroes/images/${hero.lowercase_name}.jpg`} alt="name" class="h-full object-fill" />
@@ -107,5 +120,11 @@
 <style>
 	div {
 		user-select: none;
+	}
+
+	.transition-filter {
+		transition-property: opacity filter;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 150ms;
 	}
 </style>

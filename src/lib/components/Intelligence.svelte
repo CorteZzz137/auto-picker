@@ -4,6 +4,8 @@
 
 	export let heroes: HeroType[];
 	export let pointerEvents = true;
+	export let onlyCarry = false;
+	export let onlySupport = false;
 </script>
 
 <div class="flex flex-col gap-2">
@@ -14,7 +16,7 @@
 	<div class="flex flex-row flex-wrap gap-1">
 		{#each heroes as hero}
 			{#if hero.attribute === 'intelligence'}
-				<Hero {hero} {pointerEvents} on:dragstart on:selected />
+				<Hero {hero} {pointerEvents} on:dragstart on:selected {onlyCarry} {onlySupport} />
 			{/if}
 		{/each}
 	</div>
