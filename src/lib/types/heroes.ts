@@ -1,15 +1,4 @@
-export type Role =
-	| 'Initiator'
-	| 'Melee'
-	| 'Ranged'
-	| 'Carry'
-	| 'Nuker'
-	| 'Disabler'
-	| 'Escape'
-	| 'Jungler'
-	| 'Pusher'
-	| 'Durable'
-	| 'Support';
+export type Role = 'Initiator' | 'Melee' | 'Ranged' | 'Carry' | 'Nuker' | 'Disabler' | 'Escape' | 'Pusher' | 'Durable' | 'Support';
 
 export type Attribute = 'strength' | 'agility' | 'intelligence';
 

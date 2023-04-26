@@ -49,11 +49,11 @@
 		},
 		"windows": [
 			{
-				"fullscreen": false,
-				"height": 720,
-				"resizable": false,
 				"title": "auto-picker",
-				"width": 1280
+				"fullscreen": false,
+				"resizable": false,
+				"width": 1280,
+				"height": 720
 			}
 		]
 	}

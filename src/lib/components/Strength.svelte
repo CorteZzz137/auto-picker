@@ -1,11 +1,8 @@
 <script lang="ts">
 	import Hero from '$lib/components/StaticHero.svelte';
-	import type { Hero as HeroType } from '$lib/types/heroes';
+	import { heroes } from '$lib/scripts/heroes';
 
-	export let heroes: HeroType[];
 	export let pointerEvents = true;
-	export let onlyCarry = false;
-	export let onlySupport = false;
 </script>
 
 <div class="flex flex-col gap-2">
@@ -14,9 +11,11 @@
 		<span class="flex text-sm uppercase leading-3 text-slate-200">Strength</span>
 	</div>
 	<div class="flex flex-row flex-wrap gap-1">
-		{#each heroes as hero}
+		{#each $heroes as hero}
 			{#if hero.attribute === 'strength'}
-				<Hero {hero} {pointerEvents} on:dragstart on:selected {onlyCarry} {onlySupport} />
+				<div class="h-14 w-8">
+					<Hero {hero} {pointerEvents} on:dragstart on:selected />
+				</div>
 			{/if}
 		{/each}
 	</div>

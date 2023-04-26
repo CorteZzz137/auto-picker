@@ -634,7 +634,7 @@
 		"id": 5,
 		"name": "Axe",
 		"attribute": "strength",
-		"roles": ["Melee", "Carry", "Disabler", "Durable", "Initiator", "Jungler"],
+		"roles": ["Melee", "Carry", "Disabler", "Durable", "Initiator"],
 		"winrate": "52.52%",
 		"items": ["Vanguard", "Blink Dagger", "Blade Mail", "Black King Bar", "Heart of Tarrasque", "Boots of Travel"],
 		"lane": [
@@ -880,7 +880,7 @@
 		"id": 7,
 		"name": "Batrider",
 		"attribute": "intelligence",
-		"roles": ["Ranged", "Disabler", "Escape", "Initiator", "Jungler"],
+		"roles": ["Ranged", "Disabler", "Escape", "Initiator"],
 		"winrate": "42.37%",
 		"items": ["Black King Bar", "Blink Dagger", "Octarine Core", "Linken's Sphere", "Shadow Blade", "Boots of Travel"],
 		"lane": [
@@ -1134,7 +1134,7 @@
 		"id": 9,
 		"name": "Bloodseeker",
 		"attribute": "agility",
-		"roles": ["Melee", "Carry", "Disabler", "Initiator", "Jungler", "Nuker"],
+		"roles": ["Melee", "Carry", "Disabler", "Initiator", "Nuker"],
 		"winrate": "48.78%",
 		"items": ["Phase Boots", "Maelstrom", "Black King Bar", "Eye of Skadi", "Skull Basher", "Bloodthorn"],
 		"lane": [
@@ -2019,7 +2019,7 @@
 		"id": 16,
 		"name": "Chen",
 		"attribute": "intelligence",
-		"roles": ["Ranged", "Jungler", "Pusher", "Support"],
+		"roles": ["Ranged", "Pusher", "Support"],
 		"winrate": "48.89%",
 		"items": ["Magic Stick", "Mekansm", "Wraith Pact", "Drum of Endurance"],
 		"lane": [
@@ -2396,7 +2396,7 @@
 		"id": 19,
 		"name": "Crystal Maiden",
 		"attribute": "intelligence",
-		"roles": ["Ranged", "Disabler", "Jungler", "Nuker", "Support"],
+		"roles": ["Ranged", "Disabler", "Nuker", "Support"],
 		"winrate": "52.53%",
 		"items": ["Observer and Sentry Wards", "Smoke of Deceit", "Glimmer Cape", "Black King Bar", "Boots of Travel"],
 		"lane": [
@@ -2523,7 +2523,7 @@
 		"id": 20,
 		"name": "Dark Seer",
 		"attribute": "intelligence",
-		"roles": ["Melee", "Disabler", "Escape", "Initiator", "Jungler"],
+		"roles": ["Melee", "Disabler", "Escape", "Initiator"],
 		"winrate": "50.21%",
 		"items": ["Arcane Boots", "Hood of Defiance", "Aghanim's Scepter", "Blink Dagger", "Heaven's Halberd", "Black King Bar"],
 		"lane": [
@@ -4174,7 +4174,7 @@
 		"id": 33,
 		"name": "Enchantress",
 		"attribute": "intelligence",
-		"roles": ["Ranged", "Disabler", "Durable", "Jungler", "Pusher", "Support"],
+		"roles": ["Ranged", "Disabler", "Durable", "Pusher", "Support"],
 		"winrate": "45.93%",
 		"items": ["Power Treads", "Wraith Band", "Wraith Band", "Hurricane Pike", "Bloodthorn", "Linken's Sphere"],
 		"lane": [
@@ -4305,7 +4305,7 @@
 		"id": 34,
 		"name": "Enigma",
 		"attribute": "intelligence",
-		"roles": ["Ranged", "Disabler", "Initiator", "Jungler", "Pusher"],
+		"roles": ["Ranged", "Disabler", "Initiator", "Pusher"],
 		"winrate": "49.11%",
 		"items": ["Hand of Midas", "Wraith Pact", "Blink Dagger", "Black King Bar", "Refresher Orb", "Boots of Travel"],
 		"lane": [
@@ -5559,7 +5559,7 @@
 		"id": 44,
 		"name": "Keeper of the Light",
 		"attribute": "intelligence",
-		"roles": ["Ranged", "Disabler", "Jungler", "Nuker", "Support"],
+		"roles": ["Ranged", "Disabler", "Nuker", "Support"],
 		"winrate": "45.84%",
 		"items": ["Tranquil Boots", "Spirit Vessel", "Octarine Core", "Linken's Sphere", "Scythe of Vyse", "Ethereal Blade"],
 		"lane": [
@@ -6194,7 +6194,7 @@
 		"id": 49,
 		"name": "Lifestealer",
 		"attribute": "strength",
-		"roles": ["Melee", "Carry", "Disabler", "Durable", "Escape", "Jungler"],
+		"roles": ["Melee", "Carry", "Disabler", "Durable", "Escape"],
 		"winrate": "49.97%",
 		"items": ["Armlet of Mordiggian", "Desolator", "Black King Bar", "Blink Dagger", "Abyssal Blade", "Linken's Sphere"],
 		"lane": [
@@ -6575,7 +6575,7 @@
 		"id": 52,
 		"name": "Lone Druid",
 		"attribute": "agility",
-		"roles": ["Ranged", "Carry", "Durable", "Jungler", "Pusher"],
+		"roles": ["Ranged", "Carry", "Durable", "Pusher"],
 		"winrate": "51.11%",
 		"items": ["Blight Stone", "Iron Branch", "Iron Branch", "Boots of Speed", "Wraith Band"],
 		"lane": [
@@ -6833,7 +6833,7 @@
 		"id": 54,
 		"name": "Lycan",
 		"attribute": "strength",
-		"roles": ["Melee", "Carry", "Durable", "Escape", "Jungler", "Pusher"],
+		"roles": ["Melee", "Carry", "Durable", "Escape", "Pusher"],
 		"winrate": "50.89%",
 		"items": ["Helm of the Overlord", "Black King Bar", "Assault Cuirass", "Scythe of Vyse", "Refresher Orb", "Divine Rapier"],
 		"lane": [
@@ -8119,7 +8119,7 @@
 		"id": 64,
 		"name": "Nature's Prophet",
 		"attribute": "intelligence",
-		"roles": ["Ranged", "Carry", "Escape", "Jungler", "Nuker", "Pusher"],
+		"roles": ["Ranged", "Carry", "Escape", "Nuker", "Pusher"],
 		"winrate": "44.23%",
 		"items": ["Orchid Malevolence", "Black King Bar", "Assault Cuirass", "Gleipnir", "Scythe of Vyse", "Satanic"],
 		"lane": [
@@ -10655,7 +10655,7 @@
 		"id": 84,
 		"name": "Sand King",
 		"attribute": "strength",
-		"roles": ["Melee", "Disabler", "Escape", "Initiator", "Jungler", "Nuker", "Support"],
+		"roles": ["Melee", "Disabler", "Escape", "Initiator", "Nuker", "Support"],
 		"winrate": "50.60%",
 		"items": ["Phase Boots", "Magic Wand", "Hood of Defiance", "Blink Dagger", "Eul's Scepter of Divinity", "Linken's Sphere"],
 		"lane": [
@@ -13913,7 +13913,7 @@
 		"id": 110,
 		"name": "Ursa",
 		"attribute": "agility",
-		"roles": ["Melee", "Carry", "Disabler", "Durable", "Jungler"],
+		"roles": ["Melee", "Carry", "Disabler", "Durable"],
 		"winrate": "50.08%",
 		"items": ["Battle Fury", "Phase Boots", "Blink Dagger", "Aegis of the Immortal", "Abyssal Blade", "Linken's Sphere"],
 		"lane": [
