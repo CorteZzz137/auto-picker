@@ -1,19 +1,13 @@
 export type Role = 'Initiator' | 'Melee' | 'Ranged' | 'Carry' | 'Nuker' | 'Disabler' | 'Escape' | 'Pusher' | 'Durable' | 'Support';
 
-export type Attribute = 'strength' | 'agility' | 'intelligence';
+export type Attribute = 'strength' | 'agility' | 'intelligence' | 'all';
 
 export type Percentage = `${number}%`;
 
-export type Advantage = {
-	name: string;
-	advantage: Percentage;
+export type Counter = {
 	id: number;
-};
-
-export type Disadvantage = {
 	name: string;
 	disadvantage: Percentage;
-	id: number;
 };
 
 export type Hero = {
@@ -23,11 +17,13 @@ export type Hero = {
 	attribute: Attribute;
 	roles: Role[];
 	winrate: Percentage;
-	items: string[];
+	items: {
+		name: string;
+		winrate: Percentage;
+	}[];
 	lane: {
 		name: string;
-		presence: Percentage;
-	};
-	advantage: Advantage[];
-	disadvantage: Disadvantage[];
+		winrate: Percentage;
+	}[];
+	counters: Counter[];
 };

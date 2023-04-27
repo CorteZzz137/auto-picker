@@ -21,10 +21,12 @@ export let marksId = {
 	Pusher: 1
 } as const;
 
-export const flags = writable<{
+export type Flag = {
 	role: IntRange<0, 4>;
 	marks: IntRange<0, 256>;
-}>({
+};
+
+export const flags = writable<Flag>({
 	role: 0,
 	marks: 0
 });

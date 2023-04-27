@@ -12,7 +12,7 @@
 
 <div class="grid grid-cols-[71vw_29vw] grid-rows-[71vh_29vh]">
 	<Heroes />
-	<div class="row-start-2 h-full">
+	<div class="row-start-2 h-full border border-dashed border-white">
 		<DynamicHero hero={$heroes[$selectedId]} border={false} />
 	</div>
 	<div class="col-start-2 row-span-2 mx-auto text-gray-200">

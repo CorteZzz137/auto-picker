@@ -5,6 +5,7 @@
 	import { heroes } from '$lib/scripts/heroes';
 	import VideoHero from './VideoHero.svelte';
 	import { selectedIds } from '$lib/scripts/selectedIds';
+	import { hasId } from '$lib/scripts/helpers';
 
 	export let id: number;
 	let hero: Hero | null = null;
@@ -17,11 +18,17 @@
 				? {
 						id,
 						callback: (idHero) => {
-							if ($selectedIds.has(idHero)) return;
-							if (hero && $selectedIds.has(hero.id)) $selectedIds.delete(hero.id);
+							if (hasId($selectedIds.enemy, idHero) || hasId($selectedIds.allied, idHero)) return;
+							// @ts-ignore
+							if (hero && hasId($selectedIds.enemy, hero.id)) $selectedIds.enemy[id - 5] = -1;
+							// @ts-ignore
+							if (hero && hasId($selectedIds.allied, hero.id)) $selectedIds.allied[id] = -1;
 							hero = $heroes[idHero];
 							$editing = null;
-							$selectedIds.add(idHero);
+							// @ts-ignore
+							if (id > 4) $selectedIds.enemy[id - 5] = idHero;
+							// @ts-ignore
+							else $selectedIds.allied[id] = idHero;
 							$selectedIds = $selectedIds;
 						}
 				  }

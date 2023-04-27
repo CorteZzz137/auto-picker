@@ -6,8 +6,9 @@
 	import { editing } from '$lib/scripts/editing';
 	import { selectedId } from '$lib/scripts/selectedHeroStore';
 	import { flags, marksId, rolesId } from '$lib/scripts/showFlag';
-	import type { IntRange } from '$lib/scripts/helpers';
+	import { getKeys, hasId, isMuted, type IntRange } from '$lib/scripts/helpers';
 	import { selectedIds } from '$lib/scripts/selectedIds';
+	import { heroes } from '$lib/scripts/heroes';
 	const dispatch = createEventDispatcher();
 
 	export let hero: HeroType;
@@ -90,19 +91,6 @@
 			destroy: () => {}
 		};
 	};
-
-	const isMuted = (flagss: typeof $flags, ids: typeof $selectedIds) => {
-		let flagRole = 0;
-		let flagMark = 0;
-		hero.roles.forEach((role) => {
-			if (role === 'Carry' || role === 'Support') {
-				flagRole |= rolesId[role];
-			} else {
-				flagMark |= marksId[role];
-			}
-		});
-		return (flagRole & flagss.role) !== flagss.role || (flagMark & flagss.marks) !== flagss.marks || ids.has(hero.id);
-	};
 </script>
 
 <div
@@ -112,9 +100,9 @@
 		$editing?.callback(hero.id);
 		$selectedId = hero.id;
 	}}
-	class="transition-filter relative flex h-full w-full cursor-pointer overflow-hidden {isMuted($flags, $selectedIds)
+	class="transition-filter relative flex h-full w-full cursor-pointer overflow-hidden {isMuted($flags, $selectedIds, hero)
 		? 'grayscale opacity-30'
-		: ''} {!pointerEvents ? 'pointer-events-none' : ''}"
+		: ''}"
 >
 	<div class="pointer-events-none absolute -left-[12.5%] h-full w-[125%]">
 		<img src={`/heroes/images/${hero.lowercase_name}.jpg`} alt="name" class="h-full object-fill" />
