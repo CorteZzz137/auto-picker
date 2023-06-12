@@ -1,29 +1,28 @@
 import { writable } from 'svelte/store';
 import type { IntRange } from './helpers';
-import { heroes } from './heroes';
 
 export type Role = IntRange<0, 4>;
 export type Marks = IntRange<0, 256>;
 
 export let rolesId = {
-	Carry: 2,
-	Support: 1
+	Carry: 1 << 1,
+	Support: 1 << 0
 } as const;
 
 export let marksId = {
-	Melee: 128,
-	Ranged: 64,
-	Disabler: 32,
-	Durable: 16,
-	Escape: 8,
-	Initiator: 4,
-	Nuker: 2,
-	Pusher: 1
+	Melee: 1 << 7,
+	Ranged: 1 << 6,
+	Disabler: 1 << 5,
+	Durable: 1 << 4,
+	Escape: 1 << 3,
+	Initiator: 1 << 2,
+	Nuker: 1 << 1,
+	Pusher: 1 << 0
 } as const;
 
 export type Flag = {
-	role: IntRange<0, 4>;
-	marks: IntRange<0, 256>;
+	role: Role;
+	marks: Marks;
 };
 
 export const flags = writable<Flag>({

@@ -1,12 +1,15 @@
-from datetime import timedelta
 import cv2
-import numpy as np
 import os
 
-infile = 'static/heroes/videos/muerta.webm'
-outfile = 'static/heroes/images/muerta.jpg'
-cap = cv2.VideoCapture(infile)
-count = 0
-is_read, frame = cap.read()
-if is_read:
-    cv2.imwrite(outfile, frame)
+in_folder = 'public/heroes/videos/'
+out_folder = 'public/heroes/images/'
+names = []
+for root, dirs, files in os.walk(in_folder):
+    for filename in files:
+        names.append(filename.split('.webm')[0])
+
+for name in names:
+    cap = cv2.VideoCapture(in_folder + name + '.webm')
+    is_read, frame = cap.read()
+    if is_read:
+        cv2.imwrite(out_folder + name + '/avatar.jpg', frame)

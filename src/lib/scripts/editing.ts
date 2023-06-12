@@ -1,3 +1,8 @@
 import { writable } from 'svelte/store';
 
-export const editing = writable<{ id: number; callback: (id: number) => void } | null>(null);
+export type Editing = {
+	id: number;
+	callback: (id: number) => void;
+} | null;
+
+export const editing = writable<Editing>(null);

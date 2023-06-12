@@ -1,7 +1,5 @@
-#![cfg_attr(
-    all(not(debug_assertions), target_os = "windows"),
-    windows_subsystem = "windows"
-)]
+// Prevents additional console window on Windows in release, DO NOT REMOVE!!
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -9,9 +7,19 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+#[tauri::command]
+fn get_heroes(handle: tauri::AppHandle) -> String {
+    let resource_path = handle
+        .path_resolver()
+        .resolve_resource("../public/heroes.json")
+        .expect("faled to resolve resource");
+
+    return std::fs::read_to_string(&resource_path).unwrap();
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![greet, get_heroes])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
